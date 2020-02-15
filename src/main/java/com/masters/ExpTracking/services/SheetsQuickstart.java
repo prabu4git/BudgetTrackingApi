@@ -1,5 +1,21 @@
 package com.masters.ExpTracking.services;
 
+/*Google sheets API key,
+
+        AIzaSyAjJFVBAuUbFGcy39Ync1Vy9kzkJ6NkPvg
+
+        AIzaSyAjJFVBAuUbFGcy39Ync1Vy9kzkJ6NkPvg
+
+
+        For reading the Google API , need url
+        Given this https://drive.google.com/drive/u/0/my-drive
+
+
+        1SZbmTy-bpBG1NF8M4KuK-1cpgQUbYi66TDlrnooC5PM*/
+
+/*Client Id - 357287160200-9if30ig1clln4opu4bjkj2b7htfkpbkn.apps.googleusercontent.com
+        ClientSecret
+        nlfFJWcE9C95xP0cS1sZzj9K*/
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
