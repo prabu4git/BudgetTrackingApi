@@ -22,8 +22,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -85,14 +88,18 @@ public class SheetsQuickstart {
         } else {
             System.out.println("Name, Major");
             Budgets b = null;
+            int i = 0 ;
             for (List row : values) {
+                if(i++==0)
+                    continue;
                 b = new Budgets();
-                b.setTransactionDate(row.get(0).toString());
-                b.setPostDate(row.get(1).toString());
+                DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                b.setTransactionDate(LocalDate.parse(String.valueOf(row.get(0)),df));
+                b.setPostDate(LocalDate.parse(String.valueOf(row.get(1)),df));
                 b.setDescription(row.get(2).toString());
                 b.setCategory(row.get(3).toString());
                 b.setType(row.get(4).toString());
-                b.setAmount(row.get(5).toString());
+                b.setAmount(Double.valueOf(String.valueOf(row.get(5))));
                 budgetList.add(b);
             }
         }

@@ -3,29 +3,30 @@ package com.masters.ExpTracking.models;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
+@Component
 public class Budgets implements Serializable {
 
-    private String transactionDate;
-    private String postDate;
+    private LocalDate transactionDate;
 
-    public String getTransactionDate() {
+    public LocalDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(String transactionDate) {
+    public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
 
-    public String getPostDate() {
+    public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(String postDate) {
+    public void setPostDate(LocalDate postDate) {
         this.postDate = postDate;
     }
 
@@ -53,16 +54,20 @@ public class Budgets implements Serializable {
         this.type = type;
     }
 
-    public String getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
+    private LocalDate postDate;
     private String Description;
     private String category;
     private String type;
-    private String  amount;
+    private double  amount;
+
+
+
 }
