@@ -1,21 +1,6 @@
 package com.masters.ExpTracking.services;
 
-/*Google sheets API key,
 
-        AIzaSyAjJFVBAuUbFGcy39Ync1Vy9kzkJ6NkPvg
-
-        AIzaSyAjJFVBAuUbFGcy39Ync1Vy9kzkJ6NkPvg
-
-
-        For reading the Google API , need url
-        Given this https://drive.google.com/drive/u/0/my-drive
-
-
-        1SZbmTy-bpBG1NF8M4KuK-1cpgQUbYi66TDlrnooC5PM*/
-
-/*Client Id - 357287160200-9if30ig1clln4opu4bjkj2b7htfkpbkn.apps.googleusercontent.com
-        ClientSecret
-        nlfFJWcE9C95xP0cS1sZzj9K*/
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -74,7 +59,7 @@ public class SheetsQuickstart {
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
                 .setAccessType("offline")
                 .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8080).build();
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
@@ -83,10 +68,10 @@ public class SheetsQuickstart {
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
     public List<Budgets> googleBudgetTrackingData() throws IOException, GeneralSecurityException {
+        List<Budgets> budgetList = new ArrayList<>();
         // Build a new authorized API client service.
-        List<Budgets> budgetsList = new ArrayList<>();
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1SZbmTy-bpBG1NF8M4KuK-1cpgQUbYi66TDlrnooC5PM";
+        final String spreadsheetId = "1CoMqDR2_Wr2NdSW9Z0l-yTt_D9ptWfQWQTITxdyrMlA";
         final String range = "Chase_Activity.CSV";
         Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(APPLICATION_NAME)
@@ -100,17 +85,17 @@ public class SheetsQuickstart {
         } else {
             System.out.println("Name, Major");
             Budgets b = null;
-             for (List row : values) {
+            for (List row : values) {
                 b = new Budgets();
                 b.setTransactionDate(row.get(0).toString());
-                b.setTransactionDate(row.get(1).toString());
-                b.setTransactionDate(row.get(2).toString());
-                b.setTransactionDate(row.get(3).toString());
-                b.setTransactionDate(row.get(4).toString());
-                b.setTransactionDate(row.get(5).toString());
-                budgetsList.add(b);
+                b.setPostDate(row.get(1).toString());
+                b.setDescription(row.get(2).toString());
+                b.setCategory(row.get(3).toString());
+                b.setType(row.get(4).toString());
+                b.setAmount(row.get(5).toString());
+                budgetList.add(b);
             }
         }
-        return budgetsList;
+        return budgetList;
     }
 }

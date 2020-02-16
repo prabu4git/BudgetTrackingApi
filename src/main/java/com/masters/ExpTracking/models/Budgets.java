@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.Serializable;
 
-@Data
-@Getter
-@Setter
+
 public class Budgets implements Serializable {
 
     private String transactionDate;
