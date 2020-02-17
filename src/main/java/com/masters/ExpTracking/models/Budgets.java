@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Component
@@ -67,6 +68,16 @@ public class Budgets implements Serializable {
     private String category;
     private String type;
     private double  amount;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    private UUID id;
 
 
 

@@ -28,16 +28,21 @@ public class BudgetTrackingService {
         System.out.println("********************"+expensesList.size());
         List<Budgets> budgetsList = null;
         if(expensesList.size()==0){
-            budgetsList = this.sheetsQuickstart.googleBudgetTrackingData();
-            budgetsList.stream().forEach(expense->{
-                this.expenseRepository.save(this.modelMapper.map(expense,Expenses.class));
-            });
+            expensesList = this.sheetsQuickstart.googleBudgetTrackingData();
+            this.expenseRepository.saveAll(expensesList);
+            budgetsList = modelMapper.map(expensesList, new TypeToken<List<Budgets>>() {}.getType());
             //expensesList = this.modelMapper.map(budgetsList, new TypeToken<List<Expenses>>() {}.getType());
             //this.expenseRepository.saveAll(expensesList);
         }else{
             budgetsList = modelMapper.map(expensesList, new TypeToken<List<Budgets>>() {}.getType());
         }
         return budgetsList;
+    }
+
+    public Budgets saveExpenses(Budgets budgets){
+        Expenses expenses = modelMapper.map(budgets,Expenses.class);
+        this.expenseRepository.save(expenses);
+        return budgets;
     }
 }
 

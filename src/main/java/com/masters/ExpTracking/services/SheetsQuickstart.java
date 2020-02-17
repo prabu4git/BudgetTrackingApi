@@ -14,6 +14,7 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.masters.ExpTracking.entity.Expenses;
 import com.masters.ExpTracking.models.Budgets;
 import org.springframework.stereotype.Component;
 
@@ -70,8 +71,8 @@ public class SheetsQuickstart {
      * Prints the names and majors of students in a sample spreadsheet:
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
-    public List<Budgets> googleBudgetTrackingData() throws IOException, GeneralSecurityException {
-        List<Budgets> budgetList = new ArrayList<>();
+    public List<Expenses> googleBudgetTrackingData() throws IOException, GeneralSecurityException {
+        List<Expenses> budgetList = new ArrayList<>();
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         final String spreadsheetId = "1CoMqDR2_Wr2NdSW9Z0l-yTt_D9ptWfQWQTITxdyrMlA";
@@ -87,12 +88,12 @@ public class SheetsQuickstart {
             System.out.println("No data found.");
         } else {
             System.out.println("Name, Major");
-            Budgets b = null;
+            Expenses b = null;
             int i = 0 ;
             for (List row : values) {
                 if(i++==0)
                     continue;
-                b = new Budgets();
+                b = new Expenses();
                 DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
                 b.setTransactionDate(LocalDate.parse(String.valueOf(row.get(0)),df));
                 b.setPostDate(LocalDate.parse(String.valueOf(row.get(1)),df));

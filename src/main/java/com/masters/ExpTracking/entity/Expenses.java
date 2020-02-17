@@ -21,6 +21,78 @@ public class Expenses {
     @Column(name="Description")
     private String Description;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public LocalDate getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public LocalDate getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(LocalDate postDate) {
+        this.postDate = postDate;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Date getCrteDateTime() {
+        return crteDateTime;
+    }
+
+    public void setCrteDateTime(Date crteDateTime) {
+        this.crteDateTime = crteDateTime;
+    }
+
+    public Date getMdfdDateTime() {
+        return mdfdDateTime;
+    }
+
+    public void setMdfdDateTime(Date mdfdDateTime) {
+        this.mdfdDateTime = mdfdDateTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     @Column(name="transactionDate")
     private LocalDate transactionDate;
 
