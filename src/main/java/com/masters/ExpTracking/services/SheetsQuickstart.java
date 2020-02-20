@@ -95,8 +95,8 @@ public class SheetsQuickstart {
                     continue;
                 b = new Expenses();
                 DateTimeFormatter df = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                b.setTransactionDate(LocalDate.parse(String.valueOf(row.get(0)),df));
-                b.setPostDate(LocalDate.parse(String.valueOf(row.get(1)),df));
+                b.setTransactionDate(String.valueOf(row.get(0)));
+                b.setPostDate(String.valueOf(row.get(1)));
                 b.setDescription(row.get(2).toString());
                 b.setCategory(row.get(3).toString());
                 b.setType(row.get(4).toString());

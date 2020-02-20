@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BudgetTrackingService {
@@ -39,10 +40,19 @@ public class BudgetTrackingService {
         return budgetsList;
     }
 
+    public Budgets findById(UUID id){
+        Budgets budgets = modelMapper.map(this.expenseRepository.findById(id),Budgets.class);
+        return budgets;
+    }
+
     public Budgets saveExpenses(Budgets budgets){
         Expenses expenses = modelMapper.map(budgets,Expenses.class);
         this.expenseRepository.save(expenses);
         return budgets;
+    }
+
+    public void deleteExpense(UUID id){
+        this.expenseRepository.deleteById(id);
     }
 }
 

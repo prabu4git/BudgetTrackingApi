@@ -13,14 +13,6 @@ import java.util.UUID;
 @Table(name="EXPENSE_TRACKING")
 public class Expenses {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private UUID id;
-
-    @Column(name="Description")
-    private String Description;
-
     public UUID getId() {
         return id;
     }
@@ -37,19 +29,19 @@ public class Expenses {
         Description = description;
     }
 
-    public LocalDate getTransactionDate() {
+    public String getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(String transactionDate) {
         this.transactionDate = transactionDate;
     }
 
-    public LocalDate getPostDate() {
+    public String getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDate postDate) {
+    public void setPostDate(String postDate) {
         this.postDate = postDate;
     }
 
@@ -93,11 +85,19 @@ public class Expenses {
         this.amount = amount;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
+    private UUID id;
+
+    @Column(name="Description")
+    private String Description;
+
     @Column(name="transactionDate")
-    private LocalDate transactionDate;
+    private String transactionDate;
 
     @Column(name="postDate")
-    private LocalDate postDate;
+    private String postDate;
 
     @Column(name="category")
     private String category;

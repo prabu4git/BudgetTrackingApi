@@ -13,21 +13,21 @@ import java.util.UUID;
 @Component
 public class Budgets implements Serializable {
 
-    private LocalDate transactionDate;
+    private String transactionDate;
 
-    public LocalDate getTransactionDate() {
+    public String getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
+    public void setTransactionDate(String transactionDate) {
         this.transactionDate = transactionDate;
     }
 
-    public LocalDate getPostDate() {
+    public String getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDate postDate) {
+    public void setPostDate(String postDate) {
         this.postDate = postDate;
     }
 
@@ -63,12 +63,6 @@ public class Budgets implements Serializable {
         this.amount = amount;
     }
 
-    private LocalDate postDate;
-    private String Description;
-    private String category;
-    private String type;
-    private double  amount;
-
     public UUID getId() {
         return id;
     }
@@ -77,6 +71,11 @@ public class Budgets implements Serializable {
         this.id = id;
     }
 
+    private String postDate;
+    private String Description;
+    private String category;
+    private String type;
+    private double  amount;
     private UUID id;
 
 
